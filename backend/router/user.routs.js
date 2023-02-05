@@ -1,13 +1,30 @@
 const mongoose = require("mongoose");
 const express = require("express");
 
-const {groupModel}=require("../model/men.model")
+const { GroupModel } = require("../model/user.model")
 
-const GroupRouter=express.Router()
+const GroupRouter = express.Router()
 
 
-MenRouter.post("/",async(req, res, next) => {
+GroupRouter.post("/", async (req, res) => {
+  let payload = req.body;
 
- req.send("user")
-})
-  module.exports={GroupRouter};
+  const group = await GroupModel.findOne({group_name:payload.group_name});
+  if (!group) {
+    GroupModel.insertMany(payload);
+
+    res.send({ "msg": "group created succesfully" });
+
+  } else {
+    res.send({ "msg": "Group Exisist" });
+  } 
+
+});
+
+GroupRouter.get("/", async (req, res) => {
+  const groups = await GroupModel.find({}).exec();
+  res.send(groups);
+});
+
+
+module.exports = { GroupRouter };

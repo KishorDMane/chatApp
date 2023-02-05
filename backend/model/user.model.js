@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 
 
-const groupSchema=mongoose.Schema({
+const GroupSchema=mongoose.Schema({
     
         
         group_name: String,
@@ -10,6 +10,6 @@ const groupSchema=mongoose.Schema({
         Discription: String
     
 })
-const groupModel=mongoose.model("group",groupSchema);
+const GroupModel=mongoose.model("group",GroupSchema);
 
-module.exports={groupModel};
+module.exports={GroupModel};

@@ -5,20 +5,14 @@ mongoose.set('strictQuery', false);
 const cors = require('cors')
 
 const { connection } = require("./config/db")
-const { GroupRouter } = require("./model/user.model")
+const { GroupRouter } = require("./router/user.routs")
 
-
-
-
-const app = express()
+const app = express() 
 
 app.use(express.json());
 app.use(cors())
 
 app.use("/group", GroupRouter)
-
-
-
 
 app.get("/", (req, res) => {
     res.send({ "msg": "serveris working" })
