@@ -22,7 +22,7 @@ GroupRouter.post("/", async (req, res) => {
 });
 
 GroupRouter.get("/", async (req, res) => {
-  const groups = await GroupModel.find({}).exec();
+  const groups = await GroupModel.find({});
   res.send(groups);
 });
 
